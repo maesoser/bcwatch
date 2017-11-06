@@ -2,6 +2,37 @@
 
 Experimental bitcoin transaction analyzer. I'm still do not know what I pretend to do with this code.
 
+## Compile
+
+```
+make
+```
+
+## Use
+
+- Save transactions on CSV files:
+
+```
+./bcwatch /media/usb/bclog csv
+```
+
+This command will generate two csv files, `bclog_dst.csv` and `bclog_src.csv`. 
+These files contains an incremental transaction id, a timestamp, the source or destination address and the transferred or received amount of bitcoins.
+
+- Save transactions on a Sqlite3 database:
+
+```
+./bcwatch /media/usb/bclog sql
+```
+
+- Save transactions on both csv and sqlite:
+
+Just don't include the second argument:
+
+```
+./bcwatch /media/usb/bclog
+```
+
 ## Libraries
 
 [easywsclient](https://github.com/dhbaird/easywsclient)
