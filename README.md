@@ -17,9 +17,6 @@ make
 ./bcwatch /media/usb/bclog csv
 ```
 
-This command will generate two csv files, `bclog_dst.csv` and `bclog_src.csv`. 
-These files contains an incremental transaction id, a timestamp, the source or destination address and the transferred or received amount of bitcoins.
-
 - Save transactions on a Sqlite3 database:
 
 ```
@@ -70,6 +67,7 @@ CREATE TABLE dst_addrs(
 ## csv output example
 
 ```
+// transaction ID, SRC or DST, timestamp, addr, amount transfered or received
 298870237,SRC,1510054091,1Jrajadh416mRzGrghSTadN23WCpZj82XF,100000000
 298870237,DST,1510054091,1Bt3tFCffsDhQQv3Xy2myZsed1ZryWDQQ3,16241282
 298870237,DST,1510054091,37W73JFcBpAbrdHeJQzVnmrMy8Hea4Mrus,83747418
