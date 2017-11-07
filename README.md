@@ -1,6 +1,7 @@
 # bcwatch
 
-Experimental bitcoin transaction analyzer. I'm still do not know what I pretend to do with this code.
+Experimental bitcoin transaction gatherer. I'm still do not know what I pretend to do with this tool.
+It shows on terminal and stores on json/csv/sqlite unconfirmed transactions broadcasted by [blockchain.info](https://blockchain.info)
 
 ## Compile
 
@@ -25,7 +26,13 @@ These files contains an incremental transaction id, a timestamp, the source or d
 ./bcwatch /media/usb/bclog sql
 ```
 
-- Save transactions on both csv and sqlite:
+- Save transactions on json format:
+
+```
+./bcwatch /media/usb/bclog json
+```
+
+- Save transactions on json by default:
 
 Just don't include the second argument:
 
@@ -39,7 +46,65 @@ Just don't include the second argument:
 
 [picojson](https://github.com/kazuho/picojson)
 
-## Json Transaction example
+## SQLite DB schema
+
+```
+CREATE TABLE transactions(
+    id INT PRIMARY KEY,
+    timestamp DATETIME NOT NULL);
+CREATE TABLE src_addrs(
+    id INT PRIMARY KEY,
+    tid INTEGER NOT NULL,
+    addr DOUBLE NOT NULL,
+    amount TEXT NOT NULL,
+    FOREIGN KEY(tid) REFERENCES TRANSACTIONS(id));
+CREATE TABLE dst_addrs(
+    id INT PRIMARY KEY,
+    tid INTEGER NOT NULL,
+    addr DOUBLE NOT NULL,
+    amount TEXT NOT NULL,
+    FOREIGN KEY(tid) REFERENCES TRANSACTIONS(id));
+
+```
+
+## csv output example
+
+```
+298870237,SRC,1510054091,1Jrajadh416mRzGrghSTadN23WCpZj82XF,100000000
+298870237,DST,1510054091,1Bt3tFCffsDhQQv3Xy2myZsed1ZryWDQQ3,16241282
+298870237,DST,1510054091,37W73JFcBpAbrdHeJQzVnmrMy8Hea4Mrus,83747418
+298870238,SRC,1510054091,14xL6eSF8ApA7CN5LnxwKnqyuLvCmmPJrw,7130500
+```
+
+## Json output example
+
+```
+{
+    "tid": 000000001,
+    "ts": 1509576297,
+    "sources" : [ 
+        {
+            "addr": "xXHt8e8ZR",
+            "val": 12431,
+        },
+        {
+            "addr": "xXHt8e8ZR",
+            "val": 12431,
+        }
+    ],
+    "destinations" : [ 
+        {
+            "addr": "xXHt8e8ZR",
+            "amount 12431,
+        },
+        {
+            "addr": "xXHt8e8ZR",
+            "amount 12431,
+        }
+    ]
+}
+```
+## Json original transaction example
 
 ```
 {
