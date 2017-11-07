@@ -3,6 +3,12 @@
 Experimental bitcoin transaction gatherer. I'm still do not know what I pretend to do with this tool.
 It shows on terminal and stores on json/csv/sqlite unconfirmed transactions broadcasted by [blockchain.info](https://blockchain.info)
 
+![terminal_gif](https://raw.githubusercontent.com/maesoser/bcwatch/master/animation.gif)
+
+## Requeriments
+
+You've to install `libsqlite3-dev`
+
 ## Compile
 
 ```
@@ -80,7 +86,7 @@ CREATE TABLE dst_addrs(
 {
     "tid": 000000001,
     "ts": 1509576297,
-    "sources" : [ 
+    "sources" : [
         {
             "addr": "xXHt8e8ZR",
             "val": 12431,
@@ -90,7 +96,7 @@ CREATE TABLE dst_addrs(
             "val": 12431,
         }
     ],
-    "destinations" : [ 
+    "destinations" : [
         {
             "addr": "xXHt8e8ZR",
             "amount 12431,
