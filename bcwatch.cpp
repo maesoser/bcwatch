@@ -305,7 +305,8 @@ int main(int argc, char* argv[])
 
     while(true){
         ws = WebSocket::from_url("ws://ws.blockchain.info/inv");
-        assert(ws);
+        if(ws==0) continue;
+        //assert(ws);
         usleep(200000);
         printf("Suscribing\n");
         ws->send("{\"op\":\"unconfirmed_sub\"}");
