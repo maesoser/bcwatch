@@ -305,7 +305,10 @@ int main(int argc, char* argv[])
 
     while(true){
         ws = WebSocket::from_url("ws://ws.blockchain.info/inv");
-        if(ws==0) continue;
+        if(ws==0) {
+	        usleep(1000000);
+		continue;
+	}
         //assert(ws);
         usleep(200000);
         printf("Suscribing\n");
@@ -316,7 +319,6 @@ int main(int argc, char* argv[])
         }
         usleep(1000000);
     }
-    
     delete ws;
     sqlite3_close(db);
     ofile.close();
